@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    HomePage
+{% endblock %}
+
+{% block main %}
+
+<div class="mainbody">
+    <div class="head-tt">
+        <span class="color-primary "><h1>Timetable and Scheduling Program For Health Related Activities</h1></span>
+    </div>
+
+    <div class="imgholder bg-light flex">
+        <div class="polaroid">
+            <img src="static/images/hospital.jpg" alt="hospital">
+            <div class="container">
+                <h3><p class="color-primary">hospital Schedule Management</p></h3>
+            </div>
+        </div>
+        <div class="polaroid">
+            <img src="static/images/Patient-care.jpg" alt="patient">
+             <div class="container">
+                <h3><p class="color-primary">Patient Routine Care Handling</p></h3>
+            </div>
+        </div>
+        <div class="polaroid">
+            <img src="static/images/patient-meeting.jpg" alt="">
+           <div class="container">
+                <h3><p class="color-primary">Patient-Specialist Meeting Schedule</p></h3>
+            </div>
+        </div>
+   
+    </div>
+
+    <div class="card">
+        <span><h2></h2></span>
+        <div class="content bg-primary grid">
+            <div class="text color-light">
+                <h1>Timetable and Scheduling Algorithm</h1>
+
+                <p>
+                    This Program is built for the purpose of maintaining schedules with notifications to all elements that are 
+                within the institution for the timimg of activities ad actions
+                </p>
+                <br>
+                <p>
+                    The program is based on Algorithms built on modern machine learning and artificial intelligence for optimal perfomance
+                    and problem based learning. 
+                </p>
+                <br>
+                <p>
+                    Cloud based Data Warehousing
+                </p>
+            </div>
+            <div class="form">
+                <div class="card">
+                    <h1 class="color-primary">Sign Up</h1>
+                    <form action="">
+                        <input type="text" placeholder="Title">
+                        <input type="text" placeholder="First Name">
+                        <input type="text" placeholder="Last Name">
+                        <input type="email" name="email" placeholder="Email">
+                        <div class="button-box">
+                            <input type="button" value="Proceed" class="btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+</div>
+
+{% endblock %}

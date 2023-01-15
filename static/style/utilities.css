@@ -1,0 +1,129 @@
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0, 40px;
+    overflow: hidden;
+}
+/* Displays */
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 49% 50%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+}
+.block{
+    display: block;
+}
+.inline{
+    display: inline;
+}
+.space-between{
+    justify-content: space-between;
+}
+/* Colors */
+.color-primary{
+    color: var(--primary-color);
+}
+
+.color-light{
+    color: var(--light-color);
+}
+.color-grey{
+    color: var(--grey-color);
+}
+.color-green{
+    color: var(--green-color);
+}
+
+/* Background Color */
+.bg-primary{
+    background-color: var(--primary-color);
+}
+.bg-secondary{
+    background-color: var(--secondary-color);
+}
+.bg-light{
+    background-color: var(--light-color);
+}
+
+/* Cards */
+.card{
+    background-color: #ffff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 20px;
+    margin: 10px;
+}
+.mega-card{
+    box-shadow: 0 3px 10px var(--grey-color);
+    background-color: var(--light-color);
+    width: 100%;
+    margin: 10px 10px;
+    padding: 5px 5px;
+    border-radius: 1px;
+
+}
+/* Button */
+.btn{
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.btn:hover{
+    /* transform: scale(.90); */
+    background-color: var(--light-color);
+    border: var(--primary-color) solid 0.5px;
+    color: var(--primary-color);
+}
+/* Font Size */
+.big-tt1{
+    font-size: 40px;
+}
+.big-tt2{
+    font-size: 30px;
+}
+.big-tt3{
+    font-size: 25px;
+}
+.big-tt4{
+    font-size: 20px;
+    align-self: center;
+    margin-top: 10px;
+}
+/* Positions */
+.absolute{
+    position: absolute;
+}
+.relative{
+    position: relative;
+}
+/* Padding */
+.py-1{
+    padding: 5px 5px;
+}
+.py-2{
+    padding: 10px 10px;
+}
+/* Gap */
+.gp-1{
+    gap: 5px;
+}
+/* Margin */
+.my-1{
+    margin: 5px 5px;
+}

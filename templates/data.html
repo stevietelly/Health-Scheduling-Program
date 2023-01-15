@@ -1,0 +1,308 @@
+{% extends "template.html" %}
+
+{% block title %}
+Data
+{% endblock %}
+
+{% block main %}
+<section>
+  <div class="mainwindow flex">
+    <div class="sidebar bg-secondary">
+      <nav>
+        <ul>
+          <button onclick="openTab(event, 'patients')" id="defaultOpen">
+            Patients
+          </button>
+
+        
+          <button onclick="openTab(event, 'doctors')" id="defaultOpen">
+            Doctors
+          </button>
+          <button onclick="openTab(event, 'buildings')" id="defaultOpen">
+            Buildings and Rooms
+          </button>
+        </ul>
+      </nav>
+    </div>
+    <div class="work-area" id="workarea">
+      <div class="bg-modal" id="popup">
+        <div class="modal-content bg-light" id="popup-holder">
+          <div id="patients-mc">
+            <div class="topbar">
+              <h3>New Patient</h3>
+              <i class="fa-solid fa-xmark close fa5x" onclick="CloseModal(event)"></i>
+            </div>
+            <div class="bottom-bar block">
+              
+              <form action="/patients" method="post">
+                  <div class="form-control block">
+                      <div>
+                          <p>Title</p>
+                          <input type="text" placeholder="Title" name="title">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>First Name</p>
+                          <input type="text" placeholder="First Name" name="firstname">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>Last Name</p>
+                          <input type="text" placeholder="Last Name" name="lastname">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>Gender</p>
+                          <input type="text" placeholder="Gender" name="gender">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>Username</p>
+                          <input type="text" placeholder="Username" name="username">
+                      </div>
+                  </div>
+                 
+                  <div class="form-control block">
+                      <button class="btn">Save</button>
+                  </div>
+              </form>
+              <div class="form-control block">
+                <button onclick="CloseModal(event)" class="btn">Close</button>
+
+              </div>
+          </div>
+          </div>
+          <div id="doctors-mc">
+            <div class="topbar">
+              <h3>New Doctor</h3>
+              <i class="fa-solid fa-xmark close fa5x" onclick="CloseModal(event)"></i>
+            </div>
+            <div class="bottom-bar block">
+              <form action="/doctors" method="post">
+                  <div class="form-control block">
+                      <div>
+                          <p>Title</p>
+                          <input type="text" placeholder="Title" name="title">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>First Name</p>
+                          <input type="text" placeholder="First Name" name="firstname">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>Last Name</p>
+                          <input type="text" placeholder="Last Name" name="lastname">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>Gender</p>
+                          <input type="text" placeholder="Gender" name="gender">
+                      </div>
+                  </div>
+                  <div class="form-control block">
+                      <div>
+                          <p>Username</p>
+                          <input type="text" placeholder="Username" name="username">
+                      </div>
+                  </div>
+                 
+                  <div class="form-control block">
+                      <button class="btn">Save</button>
+                  </div>
+              </form>
+              <div class="form-control block">
+                <button onclick="CloseModal(event)" class="btn">Close</button>
+
+              </div>
+          </div>
+          </div>
+
+          <div id="buildings-mc">
+            <div class="topbar">
+                <h3>New Room</h3>
+                <i class="fa-solid fa-xmark close fa5x" onclick="CloseModal(event)"></i>
+            </div>
+            <div class="bottom-bar block">
+                <div class="tab-window block">
+                 
+                    <div class="tab-panel py-10">
+                   
+
+                        <div class="rooms-tab">
+                           <form action="/room" method="post">
+                            <p>Room Name</p>
+                            <input type="text" name="name" placeholder="Room Name">
+                            <input type="submit" value="Save" class="btn">
+                           </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div id="patients" class="tab">
+        <div class="card">
+          <div class="container flex space-between">
+            <div>
+              <h3>Patients</h3>
+              <p class="stats-heading">
+                Total: 
+                {% if stats %}
+                {{stats['patients']}}
+                {% endif %}
+              </p>
+            </div>
+            <div class="flex gp-1">
+              <div class="flex my-1">
+                <i class="fa fa-female tc-primary"></i>
+                <p class="lbl-head">&nbsp Female:</p>
+                <p class="stats-heading">&nbsp 
+                  {% if stats %}
+                  {{stats['female_patients']}}
+                  {% endif %}
+                </p>
+              </div>
+
+              <div class="flex my-1">
+                <i class="fa fa-male tc-primary"></i>
+                <p class="lbl-head">&nbsp Male:</p>
+                <p class="stats-heading">&nbsp 
+                  {% if stats %}
+                  {{stats['male_patients']}}
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+            <input type="button" class="btn" value="new" onclick="OpenModal(event, 'patients-mc')" />
+          </div>
+        </div>
+
+        <div class="labels labels-6">
+          <div class="lbl-hld">Id</div>
+          <div class="lbl-hld">Title</div>
+          <div class="lbl-hld">First Name</div>
+          <div class="lbl-hld">Last Name</div>
+          <div class="lbl-hld">Gender</div>
+          <div class="lbl-hld">Username</div>
+        </div>
+        <div class="mega-card">
+          {% for patient in patients %}
+          <div class="labels-6">
+            <div>{{patient['id']}}</div>
+            <div>{{patient['title']}}</div>
+            <div>{{patient['firstname']}}</div>
+            <div>{{patient['lastname']}}</div>
+            <div>{{patient['gender']}}</div>
+            <div>{{patient['username']}}</div>
+            
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div id="doctors" class="tab">
+        <div class="card">
+          <div class="container flex space-between">
+            <div>
+              <h3>Doctors</h3>
+              <p class="stats-heading">total: 
+                Total: 
+                {% if stats %}
+                {{stats['doctors']}}
+                {% endif %}</p>
+            </div>
+            <div class="flex gp-1">
+              <div class="flex my-1">
+                <i class="fa fa-female tc-primary"></i>
+                <p class="lbl-head">&nbsp Female:</p>
+                <p class="stats-heading">&nbsp 
+                  Total: 
+                  {% if stats %}
+                  {{stats['female_doctors']}}
+                  {% endif %}
+                </p>
+              </div>
+
+              <div class="flex my-1">
+                <i class="fa fa-male tc-primary"></i>
+                <p class="lbl-head">&nbsp Male:</p>
+                <p class="stats-heading">&nbsp 
+                  Total: 
+                  {% if stats %}
+                  {{stats['male_doctors']}}
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+            <input type="button" class="btn" value="new" onclick="OpenModal(event, 'doctors-mc')" />
+          </div>
+        </div>
+
+        <div class="labels labels-6">
+          <div class="lbl-hld">Id</div>
+          <div class="lbl-hld">Title</div>
+          <div class="lbl-hld">First Name</div>
+          <div class="lbl-hld">Last Name</div>
+          <div class="lbl-hld">Gender</div>
+          <div class="lbl-hld">Username</div>
+        </div>
+        <div class="mega-card">
+          {% for doctor in doctors %}
+          <div class="labels-6 py-2">
+            <div>{{doctor['id']}}</div>
+            <div>{{doctor['title']}}</div>
+            <div>{{doctor['firstname']}}</div>
+            <div>{{doctor['lastname']}}</div>
+            <div>{{doctor['gender']}}</div>
+            <div>{{doctor['username']}}</div>
+            
+          </div>
+          {% endfor %}
+      </div>
+      </div>
+      <div id="buildings" class="tab">
+        <div class="card">
+          <div class="container flex space-between">
+            <div>
+              <h3>Physical Structures</h3>
+              <p class="stats-heading">Number of rooms:  
+                {% if stats %}
+                {{stats['total_rooms']}}
+                {% endif %}
+              </p>
+            </div>
+            <div class="flex gp-1">
+         
+            </div>
+            <input type="button" class="btn" value="new" onclick="OpenModal(event, 'buildings-mc')" />
+          </div>
+        </div>
+
+        <div class="labels">
+          <div class="lbl-hld">Id</div>
+          <div class="lbl-hld">Title</div>
+          
+        </div>
+        <div class="mega-card">
+          
+            {% for room in rooms %}
+           <div class="labels py-1">
+            <div>{{room['id']}}</div>
+            <div>{{room['title']}}</div>
+           </div>
+            {% endfor %}
+          
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

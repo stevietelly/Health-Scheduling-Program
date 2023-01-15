@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="static/script/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="static/style/major.css" />
+    <link rel="stylesheet" href="static/style/minor.css" />
+    <title>Scheduling Program: {% block title %}{% endblock %}</title>
+</head>
+
+ <!-- Navbar -->
+ <section>
+    {% if session %}
+    <div class="navbar bg-primary">
+        <div class="container flex">
+            <div>
+                <h1>Hospital Scheduling Program</h1>
+            </div>
+            <div class="flex">
+                <nav>
+                    <ul>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/data">Data</a></li>
+                        <li><a href="/schedules">Schedules</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            <div class="hello">
+                <div class="py-2">
+                    <h3>{{session["firstname"]}} {{session["lastname"]}}</h3>
+        
+                  </div>
+                  <div class="py-1 flex">
+                    <span class="color-grey">@{{session['username']}}</span>
+        
+                  </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+     <div class="navbar bg-primary">
+        <div class="container flex">
+            <div>
+                <h1>Hospital Scheduling Program</h1>
+            </div>
+            <div class="flex">
+                <nav>
+                    <ul>
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/Login">Logout</a></li>
+                    </ul>
+                </nav>
+            
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>
+<main class="container-fluid py-5 text-center">
+    {% block main %}{% endblock %}
+  </main>
+
+
+
+</body>
+
+</html>

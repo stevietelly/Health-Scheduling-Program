@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div class="card">
+    <div class="head-tt">
+    <h1>Register</h1>
+    </div>
+    <div class="form-box">
+        <form action="/register" method="post" >
+            <div class="namebox grid">
+                <label for="title">Title:</label>
+                <label for="firstname">First Name:</label>
+                <label for="lastname">Last Name</label>
+            </div>
+            <div class="namebox grid">
+                <input type="text" name="title" placeholder="Title">
+                <input type="text" name="firstname" placeholder="First Name">
+                <input type="text" name="lastname" placeholder="Last Name">
+            </div>
+            {% if name %}
+            <div class="error error-warning">
+                <span>Please Fill in all details!</span>
+            </div>
+            {% endif %}
+            <div class="idbox grid">
+                <label for="gender">Gender:</label>
+                <label for="email">Email:</label>
+                <label for="phone">Phone Number:</label>
+            </div>
+           
+            <div class="idbox grid">
+                
+                <input type="text" name="gender" placeholder="Gender">
+                <input type="email" name="email" placeholder="Email Address">
+                <input type="text" name="phone" placeholder="Phone Number">
+                
+            </div>
+            {% if id %}
+            <div class="error error-warning">
+                <span>Please Fill in all details!</span>
+            </div>
+            {% endif %}
+            <div class="biodet grid">
+                <div class="bio-box">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" name="dob" placeholder="Date of Birth">
+
+                    <div class="idbox grid">
+                        <label for="blood">Blood Group:</label>
+                        <label for="height">Height:</label>
+                        <label for="weight">Weight:</label>
+                    </div>
+
+                    <div class="idbox grid">
+                        <input type="text" name="blood" placeholder="Blood Group">
+                        <input type="number" name="height" placeholder="Height">
+                        <input type="number" name="weight" placeholder="Weight">
+                    </div>
+                   
+                </div>
+                <div class="details">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" placeholder="Username">
+
+                    <div class="pass grid">
+                        <label for="conpass">Password:</label>
+                        <label for="conpass">Confirm Password:</label>   
+                    </div>
+                    <div class="pass grid">
+                        <input type="password" name="pass" placeholder="Password">
+                        <input type="password" name="conpass" placeholder="Confrim Password">
+                    </div>
+                    
+                </div>
+            </div>
+            {% if bio %}
+            <div class="error error-warning">
+                <span>Please Fill in all details!</span>
+            </div>
+            {% endif %}
+            {% if user %}
+            <div class="error error-warning">
+                <span>Username already exists. choose another</span>
+            </div>
+            {% endif %}
+
+            {% if pas %}
+            <div class="error error-warning">
+                <span>Passwords dont Match</span>
+            </div>
+            {% endif %}
+
+            <div class="btn-box">
+                <input type="submit" value="Submit" class="btn">
+            </div>
+        </form>
+    </div>
+    
+</div>
+{% endblock %}

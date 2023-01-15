@@ -1,0 +1,111 @@
+{% extends "template.html" %}
+
+{% block title %}
+Schedules
+{% endblock %}
+
+{% block main %}
+<section>
+    <div class="bg-modal" id="popup">
+        <div class="modal-content bg-light" id="popup-holder">
+            <div id="schedules-mc">
+                <div class="topbar">
+                    <h3>New Schedule</h3>
+                    <i class="fa-solid fa-xmark close fa5x" onclick="CloseModal(event)"></i>
+                </div>
+                <div class="bottom-bar block">
+                    <form action="/schedules" method="post">
+                        <div class="form-control flex">
+                            <div>
+                                <p>Patient ID</p>
+                                <input type="text" placeholder="patient id" name="patient">
+                            </div>
+                            <div>
+                                <p>Doctor ID</p>
+                                <input type="text" placeholder="doctor id" name="doctor">
+                            </div>
+                        </div>
+
+                        <div class="form-control block">
+                            <div>
+                                <p>Date</p>
+                                <input type="date" placeholder="Date" name="appointment">
+                            </div>
+                        </div>
+                        <div class="form-control flex">
+                            <div>
+                                <p>Hour</p>
+                                <input type="text" placeholder="Hour" name="hour">
+                            </div>
+                            <div>
+                                <p>Minute</p>
+                                <input type="text" placeholder="Minute" name="minute">
+                            </div>
+
+                        </div>
+                        <input type="submit" value="Submit" class="btn">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="minwindow">
+        <div class="tab">
+            <div class="card">
+                <div class="container flex space-between">
+                    <div>
+                        <h2>Schedules</h2>
+                        <p class="stats-heading">
+                            Total:
+                            {% if stats %}
+                            {{stats['patients']}}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="flex gp-1">
+                        <div class="flex my-1">
+                            <i class="fa fa-female tc-primary"></i>
+                            <p class="lbl-head">&nbsp Female:</p>
+                            <p class="stats-heading">&nbsp
+                                {% if stats %}
+                                {{stats['female_patients']}}
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="flex my-1">
+                            <i class="fa fa-male tc-primary"></i>
+                            <p class="lbl-head">&nbsp Male:</p>
+                            <p class="stats-heading">&nbsp
+                                {% if stats %}
+                                {{stats['male_patients']}}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <input type="button" class="btn" value="new" onclick="OpenModal(event, 'schedules-mc')" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="labels">
+            <div class="lbl-hld">Patient ID</div>
+            <div class="lbl-hld">Doctor ID</div>
+            <div class="lbl-hld">Date</div>
+        </div>
+
+        <div class="megacard">
+            {% for datum in data %}
+            <div class="labels py-2">
+             <div>{{datum['patient_id']}}</div>
+             <div>{{datum['doctor_id']}}</div>
+             <div>{{datum['hour']}} : {{datum['minute']}}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+{% endblock %}

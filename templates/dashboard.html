@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+<section>
+    <div class="showcase">
+        <div class="institution-name">
+            <h1 class="text-align">Dashboard</h1>
+        </div>
+        <div>
+            <h2>Persons</h2>
+        </div>
+        <div class="card flex">
+            <div>
+                <h3>{{docs}}</h3>
+                <p class="secondary-text text-align">Doctors</p>
+            </div>
+            <div>
+                <h3>{{pats}}</h3>
+                <p class="secondary-text text-align">patients</p>
+            </div>
+        </div>
+        <div>
+            <h2>Physical</h2>
+        </div>
+        <div class="card flex">
+         
+            <div>
+                <h3>{{rooms}}</h3>
+                <p class="secondary-text text-align">Rooms</p>
+            </div>
+        </div>
+       
+
+       
+       
+    </div>
+</section>
+{% endblock %}

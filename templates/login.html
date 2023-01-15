@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+<div class="mainbody">
+    <div class="card grid">
+        <div class="options">
+            <div class="card grid">
+                <img src="static/images/google.png" alt="google" class="lginimg">
+                <div class="text">
+                    Login with Google
+                </div>
+            </div>
+            <div class="card grid">
+                <img src="static/images/microsoft.png" alt="microsoft" class="lginimg">
+                <div class="text">
+                    Login with Microsoft
+                </div>
+            </div>
+        </div>
+        <div class="loginform">
+
+            <span class="color-primary"><h1>Login</h1></span>
+
+            <form action="/login" method="post">
+                <label for="username">Username:</label>
+                <input type="text" class="username" name="username" placeholder="Username">
+                {% if user %}
+                <div class="alert alert-warning">
+                    <span>Account does not exist</span> 
+                </div>
+                {% endif %}
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="Password">
+                {% if password %}
+                <div class="alert alert-warning">
+                    <span>Password is incorrect</span>
+                </div>
+                {% endif %}
+                {% if details %}
+                <div class="alert alert-warning">
+                    <span>Missing details</span>
+                </div>
+                {% endif %}
+                <div class="aholder">
+                    <a href="">forgot Password</a>
+
+                </div>
+
+
+                <input type="submit" onclick="StoreData('name', 'username')" class="btn">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
